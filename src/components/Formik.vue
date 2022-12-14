@@ -2,7 +2,7 @@
 import { reactive, provide } from "vue";
 import {
   values as valuesKey,
-  errors as errorsKey,
+  setValueChange as setValueChangeKey,
 } from "./providers/FormikProviderKeys.js";
 
 const props = defineProps({
@@ -21,10 +21,17 @@ const props = defineProps({
 });
 
 const values = reactive(props.initialValues);
-const errors = reactive({});
 
-provide(valuesKey, values);
-provide(errorsKey, errors);
+function handleSubmit() {
+  console.log("Handle submit trigger");
+}
+
+function setValueChange(name, value) {
+  console.log("Set value change trigger", name, value);
+  values[name] = value;
+}
+
+provide(valuesKey, setValueChange);
 </script>
 
 <template>

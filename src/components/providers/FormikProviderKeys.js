@@ -1,2 +1,2 @@
 export const values = Symbol("values");
-export const errors = Symbol("errors");
+export const setValueChange = Symbol("setValueChange");

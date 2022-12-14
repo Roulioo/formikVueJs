@@ -9,11 +9,11 @@ const initialValues = reactive({
 });
 
 function validate(values) {
-  console.log("validate trigger >>>", values);
+  console.log("Validate trigger >>>", values);
 }
 
 function onSubmit(values) {
-  console.log("onSubmit trigger >>>", values);
+  console.log("On submit trigger >>>", values);
 }
 </script>
 
@@ -27,6 +27,7 @@ function onSubmit(values) {
       <form @submit.prevent="handleSubmit">
         <p>
           <Field type="text" name="name" as="input" placeholder="Enter name" />
+          <!-- <span v-if="errors.name">{{ errors.name }}</span> -->
         </p>
         <p>
           <Field
@@ -35,6 +36,7 @@ function onSubmit(values) {
             as="input"
             placeholder="Enter email"
           />
+          <!-- <span v-if="errors.email">{{ errors.email }}</span> -->
         </p>
         <p>
           <Field name="color" as="select">
