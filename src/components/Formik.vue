@@ -1,9 +1,6 @@
 <script setup>
-import { reactive, provide } from "vue";
-import {
-  values as valuesKey,
-  setValueChange as setValueChangeKey,
-} from "./providers/FormikProviderKeys.js";
+import { reactive, ref, provide } from "vue";
+import { values as valuesKey } from "./providers/FormikProviderKeys.js";
 
 const props = defineProps({
   initialValues: {
@@ -21,28 +18,24 @@ const props = defineProps({
 });
 
 const values = reactive(props.initialValues);
+let errors = reactive({});
 
-function handleSubmit() {
-  console.log("Handle submit trigger");
+function handleChange() {
+  console.log("handleChange function values", values);
+  errors = props.validate(values);
+  console.log("handleChange function errors", errors);
 }
 
-function setValueChange(name, value) {
-  console.log("Set value change trigger", name, value);
-  values[name] = value;
-}
-
-provide(valuesKey, setValueChange);
+provide(valuesKey, values);
 </script>
 
 <template>
-  <div>
-    <slot
-      :values="values"
-      :errors="errors"
-      :handleChange="handleChange"
-      :handleSubmit="handleSubmit"
-    ></slot>
-  </div>
+  <slot
+    :values="values"
+    :errors="errors"
+    :handleChange="handleChange"
+    :isSubmitting="isSubmitting"
+  ></slot>
 </template>
 
 <style scoped></style>

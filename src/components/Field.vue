@@ -1,16 +1,11 @@
 <script setup>
-import { provide, reactive, ref, inject } from "vue";
-import { setValueChange as setValueChangeKey } from "./providers/FormikProviderKeys.js";
+import { inject } from "vue";
+import { values as valuesKey } from "./providers/FormikProviderKeys.js";
 
-defineProps({
+const props = defineProps({
   name: {
     type: String,
     required: true,
-  },
-  type: {
-    type: String,
-    required: false,
-    default: "text",
   },
   as: {
     type: String,
@@ -18,16 +13,14 @@ defineProps({
   },
 });
 
-const values = reactive({});
-
-inject(setValueChangeKey, (name, value) => {
-  console.log("Set value change trigger", name, value);
-  values[name] = value;
-});
+const values = inject(valuesKey);
 </script>
 
 <template>
-  <component :is="as" :type="type" :name="name" :value="value"
+  <component
+    :is="props.as"
+    :name="props.name"
+    @input="values[props.name] = $event.target.value"
     ><slot></slot
   ></component>
 </template>
