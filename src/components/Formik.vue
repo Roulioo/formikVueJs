@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, ref, provide } from "vue";
+import { reactive, provide } from "vue";
 import { values as valuesKey } from "./providers/FormikProviderKeys.js";
 
 const props = defineProps({
@@ -21,9 +21,11 @@ const values = reactive(props.initialValues);
 let errors = reactive({});
 
 function handleChange() {
-  console.log("handleChange function values", values);
   errors = props.validate(values);
-  console.log("handleChange function errors", errors);
+
+  if (Object.keys(errors).length == 0) {
+    props.onSubmit();
+  }
 }
 
 provide(valuesKey, values);

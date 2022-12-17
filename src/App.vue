@@ -9,42 +9,42 @@ const initialValues = reactive({
   color: "",
 });
 
-let hasErrors = ref(true);
 const errors = reactive({});
+
+let hasErrors = ref(true);
 
 function validate(values) {
   const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 
   if (!values.name || values.name.length == 0) {
-    errors.name = "Required";
+    errors.name = "The field name is required";
     hasErrors.value = true;
   } else if (values.name.length > 15) {
-    errors.name = "Must be 15 characters or less";
+    errors.name = "Name must be 15 characters or less";
     hasErrors.value = true;
   } else {
+    errors.name = "";
     hasErrors.value = false;
   }
 
   if (!values.email || values.email.length == 0) {
-    errors.email = "Required";
+    errors.email = "The field email is required";
     hasErrors.value = true;
   } else if (!emailPattern.test(values.email)) {
     errors.email = "Invalid email address";
     hasErrors.value = true;
   } else {
+    errors.email = "";
     hasErrors.value = false;
   }
 
   if (!values.color || values.color.length == 0) {
-    errors.color = "Required";
+    errors.color = "The field color is required";
     hasErrors.value = true;
   } else {
+    errors.color = "";
     hasErrors.value = false;
   }
-
-  // if (Object.keys(errors).length == 0) {
-  //   onSubmit();
-  // }
 
   return errors;
 }
@@ -62,24 +62,26 @@ function onSubmit() {
   >
     <template #default="{ values, errors, handleChange, isSubmitting }">
       <form @submit.prevent="handleChange">
-        <p>
+        <div class="mb-4">
           <Field type="text" name="name" as="input" placeholder="Enter name" />
-        </p>
-        <div v-if="hasErrors">
-          <span v-if="errors?.name">{{ errors.name }}</span>
         </div>
-        <p>
+        <template v-if="hasErrors">
+          <span v-if="errors?.name" class="error mb-4">{{ errors.name }}</span>
+        </template>
+        <div class="mb-4">
           <Field
             type="email"
             name="email"
             as="input"
             placeholder="Enter email"
           />
-        </p>
-        <div v-if="hasErrors">
-          <span v-if="errors?.email">{{ errors.email }}</span>
         </div>
-        <p>
+        <template v-if="hasErrors">
+          <span v-if="errors?.email" class="error mb-4">{{
+            errors.email
+          }}</span>
+        </template>
+        <div class="mb-4">
           <Field name="color" as="select">
             <template #default>
               <option value="">Select a color</option>
@@ -88,14 +90,25 @@ function onSubmit() {
               <option value="blue">Blue</option>
             </template>
           </Field>
-        </p>
-        <div v-if="hasErrors">
-          <span v-if="errors?.color">{{ errors.color }}</span>
         </div>
+        <template v-if="hasErrors">
+          <span v-if="errors?.color" class="error mb-4">{{
+            errors.color
+          }}</span>
+        </template>
         <button type="submit">Submit</button>
       </form>
     </template>
   </Formik>
 </template>
 
-<style scoped></style>
+<style scoped>
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.error {
+  display: block;
+  color: red;
+}
+</style>
