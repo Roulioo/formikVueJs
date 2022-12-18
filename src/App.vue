@@ -1,6 +1,7 @@
 <script setup>
 import Formik from "./components/FormikComponent.vue";
 import Field from "./components/FieldComponent.vue";
+import SayHello from "./components/SayHelloComponent.vue";
 import { reactive } from "vue";
 
 const initialValues = reactive({});
@@ -84,6 +85,9 @@ function onSubmit() {
           <!-- COLOR ==> {{ values.color }} -->
         </div>
         <span v-if="errors?.color" class="error mb-4">{{ errors.color }}</span>
+        <div class="mb-4">
+          <Field name="Julio" :as="SayHello" />
+        </div>
         <button type="submit" :class="{ isDisabled: !isSubmitting }">
           Submit
         </button>

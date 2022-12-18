@@ -8,7 +8,7 @@ const props = defineProps({
     required: true,
   },
   as: {
-    type: String,
+    type: [Object, String],
     required: false,
   },
 });
