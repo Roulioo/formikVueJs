@@ -39,6 +39,7 @@
 ## Authors
 
 - [Júlio Pereira](https://github.com/Roulioo)
+- [Ali Raid](https://github.com/alilou-dev)
 
 ## License
 
