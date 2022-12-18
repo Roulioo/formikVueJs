@@ -33,7 +33,7 @@ function checkValidation() {
   }
 }
 
-function handleChange() {
+function handleSubmit() {
   props.onSubmit();
 }
 
@@ -44,7 +44,7 @@ provide(valuesKey, values);
   <slot
     :values="values"
     :errors="errors"
-    :handleChange="handleChange"
+    :handleSubmit="handleSubmit"
     :isSubmitting="isSubmitting"
   ></slot>
 </template>
