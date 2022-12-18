@@ -1,7 +1,7 @@
 <script setup>
-import Formik from "./components/Formik.vue";
-import Field from "./components/Field.vue";
-import { reactive, ref } from "vue";
+import Formik from "./components/FormikComponent.vue";
+import Field from "./components/FieldComponent.vue";
+import { reactive } from "vue";
 
 const initialValues = reactive({
   name: "",
