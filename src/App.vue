@@ -3,11 +3,7 @@ import Formik from "./components/FormikComponent.vue";
 import Field from "./components/FieldComponent.vue";
 import { reactive } from "vue";
 
-const initialValues = reactive({
-  name: "",
-  email: "",
-  color: "",
-});
+const initialValues = reactive({});
 const errors = reactive({});
 
 function validate(values) {
