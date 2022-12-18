@@ -49,8 +49,8 @@ function onSubmit() {
     :validate="validate"
     :onSubmit="onSubmit"
   >
-    <template #default="{ values, errors, handleChange, isSubmitting }">
-      <form @submit.prevent="handleChange">
+    <template #default="{ values, errors, handleSubmit, isSubmitting }">
+      <form @submit.prevent="handleSubmit">
         <div class="mb-4">
           <Field
             type="text"

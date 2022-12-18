@@ -15,13 +15,13 @@ const props = defineProps({
 
 const values = inject(valuesKey);
 
-function handleChange(event) {
+function handleSubmit(event) {
   values[props.name] = event.target.value;
 }
 </script>
 
 <template>
-  <component :is="props.as" :name="props.name" @input="handleChange">
+  <component :is="props.as" :name="props.name" @input="handleSubmit">
     <slot></slot>
   </component>
 </template>
