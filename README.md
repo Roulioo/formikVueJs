@@ -1,35 +1,45 @@
-# formik
+# Project Title
 
-This template should help get you started developing with Vue 3 in Vite.
+- Formik
+
+# Goal
+
+- Create a VueJS library using the functionalities of the React Formik library
 
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
-## Customize configuration
+## Requirement
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+- Node
+- npm
+- Vue.js 3
 
-## Project Setup
+## Installation
 
-```sh
-npm install
+```bash
+- git clone https://github.com/Roulioo/formikVueJs
+- cd formikVueJs
+- npm install
 ```
 
-### Compile and Hot-Reload for Development
+## Running
 
-```sh
-npm run dev
+```bash
+- npm run dev
 ```
 
-### Compile and Minify for Production
+## Information
 
-```sh
-npm run build
-```
+- Already three examples are implemented by default
+- Input examples (text, email, select)
+- Component examples (SayHello, Captcha)
 
-### Lint with [ESLint](https://eslint.org/)
+## Authors
 
-```sh
-npm run lint
-```
+- [Júlio Pereira](https://github.com/Roulioo)
+
+## License
+
+[GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)
